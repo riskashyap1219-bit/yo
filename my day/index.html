@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Moni ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    background:#fff5f7;
+    font-family:'Poppins',sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    overflow:hidden;
+    text-align:center;
+    position:relative;
+}
+
+.heart{
+    position:absolute;
+    color:#ff8fa3;
+    font-size:20px;
+    animation:fall 4s linear infinite;
+    opacity:0;
+    z-index:1;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh);opacity:1;}
+    100%{transform:translateY(110vh);opacity:0;}
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:30px;
+    box-shadow:0 15px 35px rgba(255,77,109,0.2);
+    width:90%;
+    max-width:400px;
+    z-index:10;
+    position:relative;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.9);}
+    to{opacity:1; transform:scale(1);}
+}
+
+h1{font-family:'Dancing Script',cursive;color:#ff4d6d;font-size:2.3rem;margin-bottom:15px;}
+p{color:#555;font-size:1rem;margin-bottom:20px;line-height:1.5;}
+
+.btn-group{display:flex;flex-direction:column;gap:12px;align-items:center;}
+
+.btn{
+    width:100%;
+    padding:15px;
+    border-radius:50px;
+    border:none;
+    font-size:1.1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn-yes{ background:#ff4d6d; color:white; box-shadow:0 4px 15px rgba(255,77,109,0.3);}
+.btn-soch{ background:#fff; color:#ff4d6d; border:2px solid #ff4d6d;}
+.btn-no{ background:#eee; color:#888; width:60%; position:relative;}
+
+.gif-img{width:220px;margin-bottom:15px;border-radius:25px;}
+</style>
+</head>
+
+<body>
+
+<script>
+function createHeart(){
+    const heart=document.createElement('div');
+    heart.innerHTML='❤️';
+    heart.className='heart';
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.animationDuration=(Math.random()*2+3)+'s';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),4000);
+}
+setInterval(createHeart,400);
+</script>
+
+<div class="card" id="page1">
+    <img class="gif-img" src="https://media.giphy.com/media/xUPGcguWZHRC2HyBRS/giphy.gif">
+    <h1>Suno Moni... ❤️</h1>
+    <p>Hamare 2 saal kitne pyaare rahe hain na? Ek baat puchni thi tumse... <br>Puchun? ✨</p>
+    <button class="btn btn-yes" onclick="startMusic(); showPage2()">Haan Pucho na! 😍</button>
+</div>
+
+<div class="card" id="page2" style="display:none;">
+    <img class="gif-img" src="https://media.giphy.com/media/26tOZ42Mg6pbTUPHW/giphy.gif">
+    <h1>Will you be my Valentine, Moni? 💍</h1>
+    <div class="btn-group">
+        <button class="btn btn-yes" onclick="showPage3()">Haan! ❤️</button>
+        <button class="btn btn-soch" onclick="showPage4()">Soch lo... 🤔</button>
+        <button class="btn btn-no" id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">Nahi 😢</button>
+    </div>
+</div>
+
+<div class="card" id="page3" style="display:none; background:#fff0f3;">
+    <h1>I Love You So Much! ❤️</h1>
+    <p style="font-size:1.2rem;">mujhe pata tha bby tum hn he bologi aapke liye ye gift bhi h isko dekhna utna acha nhi h but bhtt mehnat ki thi isme 😊💖</p>
+    <button class="btn btn-yes" onclick="showGiftPage()">🎁 Open My Gift</button>
+</div>
+
+<div class="card" id="page4" style="display:none;">
+    <img class="gif-img" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+    <h1>Oye Pagal 😭❤️</h1>
+    <p style="font-size:1.1rem; font-weight:500;">
+        Isme sochna kya h?<br>
+        Itna acha ladka to hu 😌<br>
+        Ab kya chahiye tumhe? 💁‍♂️💖
+    </p>
+    <button class="btn btn-soch" onclick="backToProposal()">Jaake Haan Bolo 😒</button>
+</div>
+
+<div class="card" id="page5" style="display:none;">
+    <h1>Surpriseeee 🎁💖</h1>
+    <p>Hamare special gift ko dekho 🎶🎥</p>
+
+    <video controls autoplay muted style="width:80%; max-width:300px; border-radius:20px; margin:20px auto; display:block;">
+        <source src="1770800591062620.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <button class="btn btn-soch" onclick="backToLove()">Back ❤️</button>
+    <button class="btn btn-yes" onclick="goToPage6()">Idher bhi aao 😏</button>
+</div>
+
+<div class="card" id="page6" style="display:none; background:#ffe5ec;">
+    <h1>Itna he tha 😅</h1>
+    <p style="font-size:1.1rem;">Bas surprise khatam… par pyaar nahi 😌❤️</p>
+
+    <img id="photoDisplay" src="" style="width:100%; max-width:400px; border-radius:20px; margin-top:15px; display:none; margin:auto;">
+
+    <div class="btn-group" style="margin-top:20px;">
+        <button class="btn btn-yes" onclick="showPhoto('hello.jpg')">My Love ❤️</button>
+        <button class="btn btn-soch" onclick="showPhoto('i love you.com.jpg')">I Love You 💖</button>
+    </div>
+</div>
+
+<script>
+function showPhoto(filename){
+    const img = document.getElementById('photoDisplay');
+    img.src = filename;
+    img.style.display = 'block';
+}
+</script>
+
+<audio id="bgMusic" loop>
+  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
+</audio>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+function startMusic(){ document.getElementById("bgMusic").play(); }
+
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+const page3 = document.getElementById("page3");
+const page4 = document.getElementById("page4");
+const page5 = document.getElementById("page5");
+const page6 = document.getElementById("page6");
+
+function showPage2(){ page1.style.display='none'; page2.style.display='block'; }
+function showPage3(){ page2.style.display='none'; page3.style.display='block'; launchConfetti(); }
+function showPage4(){ page2.style.display='none'; page4.style.display='block'; }
+function backToProposal(){ page4.style.display='none'; page2.style.display='block'; }
+
+function showGiftPage(){
+    page3.style.display='none';
+    page5.style.display='block';
+}
+
+function backToLove(){ page5.style.display='none'; page3.style.display='block'; }
+
+function goToPage6(){
+    page5.style.display='none';
+    page6.style.display='block';
+}
+
+let noTexts=["Bs dikha di dosti 🥲","Oye pagal ho ky 😭","Plz na 🫥"];
+let noIndex=0;
+function moveNo(){
+    const btn=document.getElementById('noBtn');
+    btn.style.transform=`translate(${(Math.random()*200-100)}px, ${(Math.random()*120-60)}px)`;
+    btn.innerText=noTexts[noIndex];
+    noIndex=(noIndex+1)%noTexts.length;
+}
+
+function launchConfetti(){
+    for(let i=0;i<60;i++){
+        const conf=document.createElement('div');
+        conf.innerHTML='💖';
+        conf.style.position='fixed';
+        conf.style.left=Math.random()*100+'vw';
+        conf.style.top='-10px';
+        conf.style.fontSize='20px';
+        conf.style.animation=`fall ${Math.random()*3+2}s linear`;
+        document.body.appendChild(conf);
+        setTimeout(()=>conf.remove(),5000);
+    }
+}
+</script>
+
+</body>
+</html>
